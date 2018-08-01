@@ -1,0 +1,48 @@
+body {
+ color: red;
+ background-image:url('https://wallpapercave.com/wp/sTEt5pP.jpg');
+ background-repeat: no-repeat;
+ background-size: cover;
+ font-family: 'Permanent Marker';
+ font-size: 2.3em;
+
+}
+
+form {
+     margin-top: 60px;
+
+}
+
+
+h1 {
+    color: white;
+    font-weight: 100;
+    font-size: 2em;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.2),
+                  0px 8px 13px rgba(0,0,0,0.1),
+                  0px 18px 23px rgba(0,0,0,0.1);
+}
+
+
+h2 {
+    color: white;
+}
+
+h4 {
+    color: yellow;
+}
+
+h7 {
+    color: rgba(255, 255, 255, .4);
+
+}
+
+h1 small {
+    color: red;
+}
+
+h2 small {
+    color: white;
+}
+
+

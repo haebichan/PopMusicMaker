@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>Your Own Pop Music Maker</title>
+
+
+    <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
+
+    <link rel="icon"
+          href="https://thelogo.shop/wp-content/uploads/2016/12/05-Electric-Note.png">
+
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1 id='title'>Pop Music Maker
+            <small> by Haebichan Jung</small>
+        </h1>
+    </div>
+
+
+    <form action="/" method="POST" enctype='application/json'>
+
+        <h2>Make Your Own Pop Music
+            <small> with lyrics!</small>
+        </h2>
+
+        <div class="form-group">
+            <label for="input_data">Select the available songs for input data: (hold command to select more than
+                one)</label>
+
+            <select multiple class="form-control form-control-inline" id="input_data" name='songs'>
+
+
+                <option>All The Small Things.mid</option>
+                <option>All Too Well.mid</option>
+                <option>Beauty and the Beat.mid</option>
+                <option>Breakaway.mid</option>
+                <option>Cant Feel My Face.mid</option>
+                <option>Dont Matter.mid</option>
+                <option>Dont Stop Believing.mid</option>
+                <option>Falling Slowly.mid</option>
+                <option>Hallelujah.mid</option>
+                <option>Halo.mid</option>
+                <option>Im Yours.mid</option>
+                <option>Imagine.mid</option>
+                <option>Let It Be.mid</option>
+                <option>Purpose.mid</option>
+                <option>Somewhere Out There.mid</option>
+                <option>Stay With Me.mid</option>
+                <option>Stronger.mid</option>
+                <option>Sunday Morning.mid</option>
+                <option>We Belong Together.mid</option>
+                <option>When I Was Your Man.mid</option>
+
+            </select>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Pop Music</button>
+    </form>
+
+
+    <form action="/lyrics" method="POST" enctype='application/json'>
+        <h2>Select First Words for Lyrics</h2>
+
+        <div class="form-group">
+            <label for="user_lyrics">First words for each line</label>
+            <input type="text" class="form-control" id="user_lyrics" name='user_lyrics'
+                   placeholder="Ex : Playing, Bold, Everything, Ticking, Thinking, Throw, Every, Cutting, Closer, Last, Stop, Four, Yours, Tell, Remember, Bound, Call, Tired, Wish, From, Wherever">
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                All Possible First Words
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item"> 'Playing', 'Bold', 'Everything', 'IgniteTheres', 'RightBut', 'Ticking',
+                    'Thinking', 'Throw', 'Every', 'Cutting', 'Closer', 'Last', 'Stop', 'Four', 'Yours', 'Tell',
+                    'Remember', 'Bound', 'DÃ¤r', 'Call', 'Tired', 'Wish', 'From', 'Pacing', 'Wherever', 'Sky', 'Until',
+                    'Deep', 'Shot', 'Not', 'Next', 'Whole', 'Lay', 'Youll', 'Regardless', 'River', 'Hoping', 'Here',
+                    'Just', 'Finding', 'Lose', 'Make', 'When', 'Nonstop', 'Through', 'Uh', 'Settle', 'Night', 'Do',
+                    'Makes', 'changes', 'Escape', 'Heh-eh-ehAfter', 'Know', 'Without', 'Bring', 'Wrapped', 'Pull',
+                    'Now', 'like', '`cause', 'ShitListen', 'Because', 'By', 'Cuz', 'Fade', 'Welcome', 'Wasnt',
+                    'addicted', 'Somewhere', 'Leavin', 'Morning', 'Round', 'Crazy', 'Think', 'Help', 'All', 'Face',
+                    'Lord', 'Care', 'Stuck', 'Doesnt', 'Did', 'Tripped', 'Son', 'Despite', 'Chasing', 'Going',
+                    'Strange', 'Stranded', 'Swimming', 'Come', 'Turns', 'Watched', 'Dancing', 'Fall', 'Reminded',
+                    'Black', 'Shame', 'Scratch', 'Oh', 'Down', 'Since', 'Gave', 'The', 'Cold', 'you', 'One', 'Back',
+                    'Seems', 'Long', 'Fight', 'in', 'Daisy', 'If', 'Hit', 'Find', 'I`m', 'then', 'Two', 'Was', 'Light',
+                    'Putting', 'God', 'Stupid', 'Said', 'Birds', 'Fast', 'Nobodys', 'here', 'Cry', 'Flying', 'Too', 'A',
+                    'Ah-yeah-yeah-yeah-yeah-yeah-yeah', 'Then', 'Living', 'through', 'Bones', 'Plus', 'Treat', 'Kiss',
+                    'Baby', 'Smiling', 'Inside', 'Spending', 'Got', 'Missing', 'Send', 'Take', 'Ooh', 'whos', 'right',
+                    'OohIn', 'We', 'Whenever', 'Lost', 'Youd', 'Fill', 'whatever', 'Hope', 'Before', 'Starting',
+                    'Breaking', 'Running', 'Youve', 'we', 'Memories', 'Fed', 'Feel', 'Rattle', 'O', 'Ill', 'Hello',
+                    'Mmm', 'Straight', 'Goodbye', 'Oooh', 'Id', 'With', 'Oooooh', 'Push', 'Am', 'Should', 'You', 'Dont',
+                    'Mama', 'Oh-ohOh', 'Are', 'Filling', 'Waiting', 'Walking', 'Standing', 'RumourRumour', 'Together',
+                    'My', 'Promise', 'Nobody', 'Never', 'Counting', 'Had', 'Upon', 'Watch', 'Blew', 'Bet', 'Neon',
+                    'Sometimes', 'Singing', 'supposed', 'Looking', 'Caught', 'Win', 'Lovin', 'Thats', 'Reminding',
+                    'Cause', 'Worn', 'Making', 'Tracin', 'Yes', 'Will', 'Gonna', 'Turning', 'DownWherever', 'Turn',
+                    'Everybody', 'Favouritism', 'Keep', 'To', 'Of', 'Ready', 'but', 'Hear', 'Healing', 'Wont', 'Tried',
+                    'Time', 'now', 'That', 'Steady', 'Midnight', 'Breathe', 'your', 'For', 'Ehole', 'Reach', 'Slow',
+                    'Wishing', 'Dances', 'Chasin', 'dont', 'alive', 'Fool', 'Wednesday', 'Learned', 'even', 'Swear',
+                    'so', 'Loving', 'Hes', 'Close', 'Build', 'and', 'Guess', 'Darling', 'Woah', 'Pick', 'Lying',
+                    'Hemma', 'Sell', 'They', 'Opening', 'Our', 'Soak', 'Brushing', 'HeavenRemember', 'Nothing', 'Let',
+                    'ARE', 'Till', 'Racking', 'Harder', 'Neither', 'dreaming', 'Please', 'What', 'Grow', 'Live',
+                    'Figure', 'Went', 'Ten', 'Little', 'Rumour', 'Can', 'Rest', 'Hands', 'Life', 'Its', 'is',
+                    'Anything', 'Count', 'Sensitive', 'These', 'Lately', 'Well', 'Yay', 'Show', 'I', 'Reaching', 'Lat',
+                    'Out', 'Hey', 'People', 'How', 'See', 'And', 'As', 'Love', 'Didnt', 'YeahOh', 'Lets', 'Step',
+                    'Excuse', 'Aaah', 'has', 'Pulling', 'wished', 'Guided', 'Liar', 'La-la-lay', 'Looks', 'Feeling',
+                    'Simply', 'Drowning', 'Go', 'Thoughts', 'Somehow', 'RumourAll', 'She', 'Between', 'Coming',
+                    'Losing', 'Couldnt', 'Put', 'Walk', 'La-la-', 'Is', 'Woulda', 'Made', 'Over', 'Paper', 'Tuesday',
+                    'Stay', 'Leave', 'Woaah', 'Bursting', 'Still', 'Something', 'He', 'Whisper', 'Working', 'Leaving',
+                    'Carve', 'lose', 'Trust', 'Weve', 'Forgive', 'This', 'Waitin', 'Their', 'Lights', 'Whats', 'Im',
+                    'Look', 'ooh', 'Tryna', 'AnymoreHello', 'However', 'Right', 'MusicLooking', 'cause', 'Which',
+                    'Higher', 'Tears', 'Cant', 'the', 'Yeah', 'L-la-love', 'ShitWe', 'come', 'Be', 'Opened', 'Boy',
+                    'Havent', 'Sure', 'Enough', 'Such', 'Yet', 'Heavens', 'Fire', 'Whoah', '100%', 'Broken', 'Strips',
+                    'Tells', 'Takes', 'After', 'Where', 'Born', 'Didn`t', 'Youre', 'Hide', 'Who', 'Breathing',
+                    'Dot-dot-dot', 'Say', 'that', 'Ive', 'Iron', 'It', 'Away', 'Or', 'love', 'Sunset', 'Want', 'Floors',
+                    'Painting', 'Has', 'holding', 'Ohh', 'So', 'Only', 'to', 'HeyIve', 'Theyve', 'Some', 'until', 'Try',
+                    'Even', 'There', 'Theres', 'Imma', 'Run', 'Old', 'its', 'Under', 'Faded', 'Finally', 'Sitting',
+                    'Consider', 'Hold', 'Lie', 'Lifes', 'In', 'Miles', 'Day', 'Underneath', 'Into', 'Fuck', 'Aint',
+                    'No', 'Keeping', 'Why', 'World', 'Swimmin', 'Somebody', 'Towards', 'RumourShe', 'Ah', 'Whatever',
+                    'Oh-oh-oh-ohAll', 'Wake', 'Bad', 'at', 'Sexy', 'Were', 'Though', 'Came', 'Your', 'Choose', 'Theyre',
+                    'Thursday', 'Swore', 'At', 'Like', 'orgasm', 'But', 'Trapped', 'Regrets', 'Have', 'Girl', 'Loves',
+                    'Than', 'Swept', 'Shows', 'YeahWhy', 'VocabularySome', 'Give', 'Get', 'Maybe', 'On', 'Hooked',
+                    'whenever', 'make', 'ShitDont', 'Magic', 'Rolling', 'Means', 'Someone'</a>
+
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Generate Pop Lyrics</button>
+
+
+    </form>
+
+
+    <form action="/random_lyrics" method="POST" enctype='application/json'>
+        <h2>...Or Create Random Lyrics</h2>
+        <div class="form-group">
+            <label for="machine_random_input">Machine Will Do It For You</label>
+            <input type="text" disabled class="form-control" id="machine_random_input" name="machine_random_input">
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generate Random Pop Lyrics</button>
+
+
+    </form>
+
+
+</div>
+
+<div class="container">
+    <p>*</p>
+    <h4>Reach Haebichan Jung at hj2444.columbia.edu / www.linkedin.com/in/haebichan</h4>
+</div>
+
+</body>
+
+
+</html>
