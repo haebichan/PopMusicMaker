@@ -8,6 +8,7 @@ body {
 
 }
 
+
 form {
      margin-top: 60px;
 
@@ -30,6 +31,7 @@ h2 {
 
 h4 {
     color: yellow;
+    font-family: 'Lato', sans-serif;
 }
 
 h7 {
