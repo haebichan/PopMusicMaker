@@ -1,0 +1,21 @@
+fs: 44100
+hash: 1bd4f582e255e5adf031153485f7245a
+hop_length_seconds: 0.02
+include_acceleration: true
+include_delta: true
+include_mfcc0: true
+mfcc:
+  fmax: 22050
+  fmin: 0
+  hop_length: 882
+  htk: false
+  n_fft: 2048
+  n_mels: 40
+  n_mfcc: 20
+  win_length: 1764
+  window: hamming_asymmetric
+mfcc_acceleration:
+  width: 9
+mfcc_delta:
+  width: 9
+win_length_seconds: 0.04

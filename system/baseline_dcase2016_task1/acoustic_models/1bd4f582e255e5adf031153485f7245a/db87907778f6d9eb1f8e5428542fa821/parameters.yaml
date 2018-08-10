@@ -1,0 +1,15 @@
+audio_error_handling:
+  clean_data: false
+hash: db87907778f6d9eb1f8e5428542fa821
+method: gmm
+parameters:
+  covariance_type: diag
+  init_params: wmc
+  min_covar: 0.001
+  n_components: 16
+  n_init: 1
+  n_iter: 40
+  params: wmc
+  random_state: 0
+  thresh: null
+  tol: 0.001

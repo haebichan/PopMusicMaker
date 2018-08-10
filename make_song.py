@@ -16,13 +16,13 @@ def main(input):
         all_parts = []
 
         for song in midi_list:
-            midi = converter.parse('/Users/Haebichan/Desktop/Final Project Galvanize/C Major Midi/' + song)
-            for i in midi.parts:
-                i.insert(0, instrument.Piano())
-            parts = instrument.partitionByInstrument(midi)
+           midi = converter.parse('/var/www/FlaskApps/PopMusicMakerApp/midi/' + song)
+           for i in midi.parts:
+               i.insert(0, instrument.Piano())
+           parts = instrument.partitionByInstrument(midi)
 
-            all_midis.append(midi)
-            all_parts.append(parts)
+           all_midis.append(midi)
+           all_parts.append(parts)
 
         return all_midis, all_parts
 
@@ -60,7 +60,7 @@ def main(input):
         harmony_duration = []
 
         for song in midi_list:
-            midi = converter.parse('/Users/Haebichan/Desktop/Final Project Galvanize/C Major Midi/' + song)
+            midi = converter.parse('/var/www/FlaskApps/PopMusicMakerApp/midi/' + song)
 
             for i in midi[1].recurse():
                 if isinstance(i, note.Note):
@@ -319,7 +319,7 @@ def main(input):
         harmony_duration = []
 
         for song in midi_list:
-            midi = converter.parse('/Users/Haebichan/Desktop/Final Project Galvanize/C Major Midi/' + song)
+            midi = converter.parse('/var/www/FlaskApps/PopMusicMakerApp/midi/' + song)
 
             for i in midi[1].recurse():
                 if isinstance(i, note.Note):
@@ -385,63 +385,183 @@ def main(input):
     highest_harmony_number = max(highest_harmony_number)
 
 
-
-    def create_song(vert_dep_matrix, vert_duration_matrix, hori_dep_matrix, hori_duration_matrix, harmony_list,
-                    harmony_duration_list, gap_width=10):
+    def create_song_cluster_1(vert_dep_matrix, vert_duration_matrix, hori_dep_matrix, hori_duration_matrix, harmony_list, harmony_duration_list, gap_width = 10):
         song_generation = []
         song_generation_duration = []
+        
 
+        segment_count = 2
+        
         repetition_count = 0
-
-        while repetition_count <= 7:
-
+        
+        while repetition_count <= segment_count:
+        
             for harmony_note, harmony_duration in zip(harmony_list[::2], harmony_duration_list[::2]):
                 song_generation.append(harmony_note)
                 song_generation_duration.append(harmony_duration)
-
-                melody_note = np.random.choice(vert_dep_matrix.loc[harmony_note].index,
-                                               p=vert_dep_matrix.loc[harmony_note].values)
-                melody_duration = float(np.random.choice(vert_duration_matrix.loc[harmony_note].index,
-                                                         p=vert_duration_matrix.loc[harmony_note].values))
-
+        
+                melody_note = np.random.choice(vert_dep_matrix.loc[harmony_note].index, p = vert_dep_matrix.loc[harmony_note].values)
+                melody_duration = float(np.random.choice(vert_duration_matrix.loc[harmony_note].index, p = vert_duration_matrix.loc[harmony_note].values))
+        
+        
                 while every_note_dic[melody_note] < (highest_harmony_number + gap_width):
-                    melody_note = np.random.choice(vert_dep_matrix.loc[harmony_note].index,
-                                                   p=vert_dep_matrix.loc[harmony_note].values)
-                    melody_duration = float(np.random.choice(vert_duration_matrix.loc[harmony_note].index,
-                                                             p=vert_duration_matrix.loc[harmony_note].values))
+                    melody_note = np.random.choice(vert_dep_matrix.loc[harmony_note].index, p = vert_dep_matrix.loc[harmony_note].values)
+                    melody_duration = float(np.random.choice(vert_duration_matrix.loc[harmony_note].index, p = vert_duration_matrix.loc[harmony_note].values))
+        
+        
+                melody_dic = {}
+                count = 0
+        
+                while count <= 8.0 and (melody_duration + count < 8.0):
+        
+                    melody_dic[melody_note] = melody_duration
+        
+                    count+= melody_duration
+        
+        
+                    melody_note = np.random.choice(hori_dep_matrix.loc[melody_note].index, p = hori_dep_matrix.loc[melody_note].values)
+                    melody_duration = float(np.random.choice(hori_duration_matrix.loc[melody_note].index, p = hori_duration_matrix.loc[melody_note].values))
+        
+                    while every_note_dic[melody_note] < (highest_harmony_number + gap_width):
+                        melody_note = np.random.choice(hori_dep_matrix.loc[melody_note].index, p = hori_dep_matrix.loc[melody_note].values)
+                        melody_duration = float(np.random.choice(hori_duration_matrix.loc[melody_note].index, p = hori_duration_matrix.loc[melody_note].values))
+        
+                    melody_dic[melody_note] = melody_duration
+                    count+= melody_duration
+        
+        
+        
+                song_generation.append(melody_dic)
+        
+            repetition_count += 1
+        segment_count +=1
+            
+        
+        return song_generation, song_generation_duration
+
+
+    def create_song_cluster_2(vert_dep_matrix, vert_duration_matrix, hori_dep_matrix, hori_duration_matrix, harmony_list, harmony_duration_list, gap_width2 = 13):
+
+        song_generation2 = []
+        song_generation_duration2 = []
+        
+        
+        segment_count = 2
+
+        repetition_count = 0
+
+        while repetition_count <= segment_count:
+
+            for harmony_note, harmony_duration in zip(harmony_list[::2], harmony_duration_list[::2]):
+                song_generation2.append(harmony_note)
+                song_generation_duration2.append(harmony_duration)
+
+                melody_note = np.random.choice(vert_dep_matrix.loc[harmony_note].index, p = vert_dep_matrix.loc[harmony_note].values)
+                melody_duration = float(np.random.choice(vert_duration_matrix.loc[harmony_note].index, p = vert_duration_matrix.loc[harmony_note].values))
+
+
+                while every_note_dic[melody_note] < (highest_harmony_number + gap_width2):
+                    melody_note = np.random.choice(vert_dep_matrix.loc[harmony_note].index, p = vert_dep_matrix.loc[harmony_note].values)
+                    melody_duration = float(np.random.choice(vert_duration_matrix.loc[harmony_note].index, p = vert_duration_matrix.loc[harmony_note].values))
+
 
                 melody_dic = {}
                 count = 0
+
 
                 while count <= 8.0 and (melody_duration + count < 8.0):
 
                     melody_dic[melody_note] = melody_duration
 
-                    count += melody_duration
+                    count+= melody_duration
 
-                    melody_note = np.random.choice(hori_dep_matrix.loc[melody_note].index,
-                                                   p=hori_dep_matrix.loc[melody_note].values)
-                    melody_duration = float(np.random.choice(hori_duration_matrix.loc[melody_note].index,
-                                                             p=hori_duration_matrix.loc[melody_note].values))
 
-                    while every_note_dic[melody_note] < (highest_harmony_number + gap_width):
-                        melody_note = np.random.choice(hori_dep_matrix.loc[melody_note].index,
-                                                       p=hori_dep_matrix.loc[melody_note].values)
-                        melody_duration = float(np.random.choice(hori_duration_matrix.loc[melody_note].index,
-                                                                 p=hori_duration_matrix.loc[melody_note].values))
+
+                    melody_note = np.random.choice(hori_dep_matrix.loc[melody_note].index, p = hori_dep_matrix.loc[melody_note].values)
+                    melody_duration = float(np.random.choice(hori_duration_matrix.loc[melody_note].index, p = hori_duration_matrix.loc[melody_note].values))
+
+                    while every_note_dic[melody_note] < (highest_harmony_number + gap_width2):
+                        melody_note = np.random.choice(hori_dep_matrix.loc[melody_note].index, p = hori_dep_matrix.loc[melody_note].values)
+                        melody_duration = float(np.random.choice(hori_duration_matrix.loc[melody_note].index, p = hori_duration_matrix.loc[melody_note].values))
 
                     melody_dic[melody_note] = melody_duration
-                    count += melody_duration
+                    count+= melody_duration
 
-                song_generation.append(melody_dic)
+
+
+                song_generation2.append(melody_dic)
 
             repetition_count += 1
+        segment_count +=1
+        
+        return song_generation2, song_generation_duration2
 
-        return song_generation, song_generation_duration
+
+    def create_song_cluster_3(vert_dep_matrix, vert_duration_matrix, hori_dep_matrix, hori_duration_matrix, harmony_list, harmony_duration_list, gap_width3 = 17):
+
+        song_generation3 = []
+        song_generation_duration3 = []
+        
+        
+        segment_count = 3
+
+        repetition_count = 0
+
+        while repetition_count <= segment_count:
+
+            for harmony_note, harmony_duration in zip(harmony_list[::2], harmony_duration_list[::2]):
+                song_generation3.append(harmony_note)
+                song_generation_duration3.append(harmony_duration)
+
+                melody_note = np.random.choice(vert_dep_matrix.loc[harmony_note].index, p = vert_dep_matrix.loc[harmony_note].values)
+                melody_duration = float(np.random.choice(vert_duration_matrix.loc[harmony_note].index, p = vert_duration_matrix.loc[harmony_note].values))
 
 
-    song, song_duration = create_song(vert_dep_matrix, vert_duration_matrix, hori_dep_matrix, hori_duration_matrix,
-                                      harmony_list, harmony_duration_list)
+                while every_note_dic[melody_note] < (highest_harmony_number + gap_width3):
+                    melody_note = np.random.choice(vert_dep_matrix.loc[harmony_note].index, p = vert_dep_matrix.loc[harmony_note].values)
+                    melody_duration = float(np.random.choice(vert_duration_matrix.loc[harmony_note].index, p = vert_duration_matrix.loc[harmony_note].values))
+
+
+                melody_dic = {}
+                count = 0
+
+
+                while count <= 8.0 and (melody_duration + count < 8.0):
+
+                    melody_dic[melody_note] = melody_duration
+
+                    count+= melody_duration
+
+
+
+                    melody_note = np.random.choice(hori_dep_matrix.loc[melody_note].index, p = hori_dep_matrix.loc[melody_note].values)
+                    melody_duration = float(np.random.choice(hori_duration_matrix.loc[melody_note].index, p = hori_duration_matrix.loc[melody_note].values))
+
+                    while every_note_dic[melody_note] < (highest_harmony_number + gap_width3):
+                        melody_note = np.random.choice(hori_dep_matrix.loc[melody_note].index, p = hori_dep_matrix.loc[melody_note].values)
+                        melody_duration = float(np.random.choice(hori_duration_matrix.loc[melody_note].index, p = hori_duration_matrix.loc[melody_note].values))
+
+                    melody_dic[melody_note] = melody_duration
+                    count+= melody_duration
+
+
+
+                song_generation3.append(melody_dic)
+
+            repetition_count += 1
+        segment_count +=1
+        
+        return song_generation3, song_generation_duration3
+
+
+
+    song, song_duration = create_song_cluster_1(vert_dep_matrix, vert_duration_matrix, hori_dep_matrix, hori_duration_matrix, harmony_list, harmony_duration_list)
+    song2, song_duration2 = create_song_cluster_2(vert_dep_matrix, vert_duration_matrix, hori_dep_matrix, hori_duration_matrix, harmony_list, harmony_duration_list)
+    song3, song_duration3 = create_song_cluster_3(vert_dep_matrix, vert_duration_matrix, hori_dep_matrix, hori_duration_matrix, harmony_list, harmony_duration_list)
+
+    song = song + song2 + song3 + song2 + song3
+    song_duration = song_duration + song_duration2 + song_duration3 + song_duration2 + song_duration3 
+
 
     score = stream.Score()
     p1 = stream.Part()
@@ -486,4 +606,6 @@ def main(input):
     for i in score.parts:
         i.insert(0, instrument.Piano())
 
-    score.write('midi', fp='/Users/Haebichan/Desktop/Your song.midi')
+    score.write('midi', fp='your_song.midi')
+
+main(['Purpose.mid'])

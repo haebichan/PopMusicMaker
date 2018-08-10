@@ -1,5 +1,5 @@
 import numpy as np
-from flask import Flask, abort, jsonify, request, render_template
+from flask import Flask, abort, jsonify, request, render_template, send_file
 import pickle
 import make_song
 import make_lyrics
@@ -21,7 +21,7 @@ def song():
 
     make_song.main(midi_list)
 
-    return render_template('home.html')
+    return send_file('your_song.midi')
 
 
 
@@ -55,9 +55,12 @@ def random_lyrics():
 
     return render_template('home.html')
 
+# @app.route('/play_song', methods = ['GET'])
+# def play_downloaded_song():
+#     return send_file('your_song.midi')
 
 
 
 
 if __name__ == '__main__':
-    app.run(port=9000, debug=True)
+    app.run(port=3000, debug=True)
