@@ -1,9 +1,10 @@
 body {
- color: red;
- background-image:url('https://wallpapercave.com/wp/sTEt5pP.jpg');
+ color: #e6e6e6;
+ background-image: url('photo8.jpg');
  background-repeat: no-repeat;
  background-size: cover;
- font-family: 'Permanent Marker';
+ /* font-family: 'Lato', sans-serif; */
+ font-family: 'Open Sans Condensed', sans-serif;
  font-size: 2.3em;
 
 }
@@ -27,10 +28,13 @@ h1 {
 
 h2 {
     color: white;
+         text-shadow: 0px 4px 3px rgba(0,0,0,0.2),
+                  0px 8px 13px rgba(0,0,0,0.1),
+                  0px 18px 23px rgba(0,0,0,0.1);
 }
 
 h4 {
-    color: yellow;
+    color: #66ccff;
     font-family: 'Lato', sans-serif;
 }
 
@@ -40,11 +44,11 @@ h7 {
 }
 
 h1 small {
-    color: red;
+    color: #e6e6e6;
 }
 
 h2 small {
     color: white;
-}
 
+}
 

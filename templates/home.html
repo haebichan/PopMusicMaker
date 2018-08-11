@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -19,12 +19,20 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">-->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans+Condensed:300" rel="stylesheet">
 
 
     <link rel="icon"
           href="https://thelogo.shop/wp-content/uploads/2016/12/05-Electric-Note.png">
+
+    <style>
+img {
+    opacity: 0.9;
+    filter: alpha(opacity=50)
+}
+
+    </style>
 
 
 </head>
@@ -36,7 +44,7 @@
 
 
     <div class="page-header">
-        <h1 id='title'>Pop Music Maker
+        <h1 id='title'> <b>Pop Music Maker</b>
             <small> by Haebichan Jung</small>
         </h1>
     </div>
@@ -159,7 +167,7 @@
 
 
     <form action="/random_lyrics" method="POST" enctype='application/json'>
-        <h2>...Or Create Random Lyrics</h2>
+        <h2>Create Random Lyrics</h2>
         <div class="form-group">
             <label for="machine_random_input">Machine Will Do It For You</label>
             <input type="text" disabled class="form-control" id="machine_random_input" name="machine_random_input">
@@ -176,7 +184,8 @@
 
 <div class="container">
     <p>*</p>
-    <h4>Reach Haebichan Jung at hj2444.columbia.edu / www.linkedin.com/in/haebichan</h4>
+    <h4>Reach Haebichan Jung at hj2444.columbia.edu</h4>
+    <h4> / www.linkedin.com/in/haebichan</h4>
 </div>
 
 </body>
