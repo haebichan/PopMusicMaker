@@ -1,6 +1,6 @@
 # PopMusicMaker
 
-Please go to https://youtu.be/WeU5xzsqPmk to see a video I made that explains what PopMusicMaker is, and how I built the machine (part 2 on evaluation and general application of my machine will be up soon).
+Please go to https://towardsdatascience.com/making-music-when-simple-probabilities-outperform-deep-learning-75f4ee1b8e69 to read about what PopMusicMaker is, and how I built the machine. Youtube version is also available here: https://www.youtube.com/watch?v=WeU5xzsqPmk&t=13s
 
 The link for the PopMusicMaker website (made through flask): http://popmusicmaker.com
 
