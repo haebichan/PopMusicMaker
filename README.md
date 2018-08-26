@@ -4,6 +4,6 @@ Please go to https://youtu.be/WeU5xzsqPmk to see a video I made that explains wh
 
 The link for the PopMusicMaker website (made through flask): http://popmusicmaker.com
 
-Pop Music Maker built on Decision Tree and Hidden Markov Model-like structure. Inspired by the desire to build my own model that produces better pop music than LSTMs / deep learning. 
+Pop Music Maker built on Decision Tree and Hidden Markov Model-like structure. Inspired by the desire to build my own model that produces better music that sounds more like pop than ones made by LSTMs / deep learning. 
 
 
